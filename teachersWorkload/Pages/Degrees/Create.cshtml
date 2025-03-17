@@ -1,0 +1,14 @@
+﻿@page
+@model CreateModel
+
+<h2>Создать степень</h2>
+
+<form method="post" class="form-group">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Название</label>
+        <input type="text" id="Name" name="Name" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Создать</button>
+    <a href="/Degrees/Index" class="btn btn-secondary">Отмена</a>
+</form>

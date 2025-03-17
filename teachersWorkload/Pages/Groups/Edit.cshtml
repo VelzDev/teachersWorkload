@@ -1,0 +1,14 @@
+﻿@page "{id:int}"
+@model EditModel
+
+<h2>Редактор группы</h2>
+
+<form method="post" class="form-group">
+    <div class="mb-3">
+        <label for="GroupNumber" class="form-label">Название группы</label>
+        <input type="text" id="GroupNumber" name="GroupNumber" class="form-control" value="@Model.Group.GroupNumber" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a href="/Groups/Index" class="btn btn-secondary">Отмена</a>
+</form>

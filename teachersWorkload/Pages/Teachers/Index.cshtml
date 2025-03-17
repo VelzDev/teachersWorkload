@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+
+<h2>Преподаватели</h2>
+
+<!-- Добавляем таблицу с Bootstrap -->
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>фамилия</th>
+            <th>имя</th>
+            <th>отчество</th>
+            <th>степень</th>
+            <th>должность</th>
+            <th>стаж</th>
+            <th>действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var teacher in Model.Teachers)
+        {
+                <tr>
+                    <td>@teacher.LastName</td>
+                    <td>@teacher.FirstName</td>
+                    <td>@teacher.Patronymic</td>
+                    <td>@teacher.Degree.Name</td>
+                    <td>@teacher.Position.Name</td>
+                    <td>@teacher.Experience</td>
+                    <td>
+                        <!-- Кнопки редактирования и удаления -->
+                        <a href="/Teachers/Edit/@teacher.Id" class="btn btn-primary btn-sm mx-1">изменить</a> |
+                        <a href="/Teachers/Delete/@teacher.Id" class="btn btn-danger btn-sm mx-1">удалить</a>
+                        <a href="/Teachers/TeacherReport/@teacher.Id" class="btn btn-primary btn-sm mx-1">Отчет</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Ссылка для добавления нового преподавателя -->
+<a href="/Teachers/Create" class="btn btn-success btn-lg">добавить нового преподавателя</a>

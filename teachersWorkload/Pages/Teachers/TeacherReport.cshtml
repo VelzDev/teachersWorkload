@@ -1,0 +1,7 @@
+﻿@page "{teacherId:int}"
+@model TeacherReportModel
+
+<h2>Отчет по преподавателю</h2>
+
+<!-- Ссылка для скачивания PDF -->
+<a href="@Url.Page("/Teachers/TeacherReport", "Download", new { teacherId = Model.TeacherId })" class="btn btn-primary">Скачать PDF</a>

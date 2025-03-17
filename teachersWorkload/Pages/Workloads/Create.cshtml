@@ -1,0 +1,67 @@
+﻿@page
+@model CreateModel
+
+<h2>Добавить нагрузку</h2>
+
+<form method="post" class="form-group">
+    <div class="mb-3">
+        <label for="TeacherId" class="form-label">Преподаватель</label>
+        <select id="TeacherId" name="TeacherId" class="form-control" required>
+            @foreach (var teacher in Model.Teachers)
+            {
+                <option value="@teacher.Id">@teacher.LastName @teacher.FirstName @teacher.Patronymic</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="SubjectId" class="form-label">Предмет</label>
+        <select id="SubjectId" name="SubjectId" class="form-control" required onchange="updateHours()">
+            @foreach (var subject in Model.Subjects)
+            {
+                <option value="@subject.Id" data-lecture-hours="@subject.LectureHours" data-practical-hours="@subject.PracticalHours">@subject.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="GroupId" class="form-label">Группа</label>
+        <select id="GroupId" name="GroupId" class="form-control" required>
+            @foreach (var group in Model.Groups)
+            {
+                <option value="@group.Id">@group.GroupNumber</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="LectureHours" class="form-label">Лекционные часы</label>
+        <input type="number" id="LectureHours" name="LectureHours" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="PracticalHours" class="form-label">Практические часы</label>
+        <input type="number" id="PracticalHours" name="PracticalHours" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавить</button>
+    <a href="/Workloads/Index" class="btn btn-secondary">Отмена</a>
+</form>
+
+<script>
+    function updateHours() {
+        var subjectSelect = document.getElementById("SubjectId");
+        var selectedOption = subjectSelect.options[subjectSelect.selectedIndex];
+
+        // Получаем лекционные и практические часы из выбранного предмета
+        var lectureHours = selectedOption.getAttribute("data-lecture-hours");
+        var practicalHours = selectedOption.getAttribute("data-practical-hours");
+
+        // Обновляем значения полей с часами
+        document.getElementById("LectureHours").value = lectureHours;
+        document.getElementById("PracticalHours").value = practicalHours;
+    }
+
+    // Вызовем функцию при загрузке страницы для установки значений по умолчанию
+    window.onload = updateHours;
+</script>

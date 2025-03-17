@@ -1,0 +1,11 @@
+﻿@page "{id:int}"
+@model DeleteModel
+
+<h2>Удалить нагрузку</h2>
+
+<p>Вы действительно хотите удалить данную нагрузку для преподавтеля: <strong>@Model.Workload.Teacher.LastName @Model.Workload.Teacher.FirstName @Model.Workload.Teacher.Patronymic</strong>?</p>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Да, удалить</button>
+    <a href="/Workloads/Index" class="btn btn-secondary">Отмена</a>
+</form>

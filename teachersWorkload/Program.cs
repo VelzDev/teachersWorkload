@@ -1,5 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using teachersWorkload.Context;
+using teachersWorkload.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<PdfReportService>();
 // Add services to the container.
 builder.Services.AddRazorPages();
 

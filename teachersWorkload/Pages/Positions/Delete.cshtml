@@ -1,0 +1,12 @@
+﻿@page "{id:int}"
+@model DeleteModel
+
+<h2>Удалить должность</h2>
+
+<p>Вы действительно хотите удалить: <strong>@Model.Position.Name</strong>?</p>
+
+<!-- Используем кнопки Bootstrap для подтверждения удаления -->
+<form method="post">
+    <button type="submit" class="btn btn-danger">Да, удалить</button>
+    <a href="/Positions/Index" class="btn btn-secondary">Отмена</a>
+</form>

@@ -1,0 +1,39 @@
+﻿@page "{id:int}"
+@model EditModel
+
+<h2>Изменить нагрузку</h2>
+
+<form method="post" class="form-group">
+    <div class="mb-3">
+        <label for="TeacherId" class="form-label">Преподаватель</label>
+        <select id="TeacherId" name="TeacherId" class="form-control" required>
+            @foreach (var teacher in Model.Teachers)
+            {
+                <option value="@teacher.Id")>@teacher.LastName @teacher.FirstName @teacher.Patronymic</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="SubjectId" class="form-label">Предмет</label>
+        <select id="SubjectId" name="SubjectId" class="form-control" required>
+            @foreach (var subject in Model.Subjects)
+            {
+                <option value="@subject.Id")>@subject.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="GroupId" class="form-label">Группа</label>
+        <select id="GroupId" name="GroupId" class="form-control" required>
+            @foreach (var group in Model.Groups)
+            {
+                <option value="@group.Id")>@group.GroupNumber</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a href="/Workloads/Index" class="btn btn-secondary">Отмена</a>
+</form>

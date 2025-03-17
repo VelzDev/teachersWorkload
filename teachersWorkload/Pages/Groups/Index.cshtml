@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+
+<h2>Группы</h2>
+
+<!-- Добавляем таблицу с Bootstrap -->
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>Название группы</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model.Groups)
+        {
+            <tr>
+                <td>@group.GroupNumber</td>
+                <td>
+                    <!-- Кнопки редактирования и удаления -->
+                    <a href="/Groups/Edit/@group.Id" class="btn btn-primary btn-sm mx-1">Изменить</a> |
+                    <a href="/Groups/Delete/@group.Id" class="btn btn-danger btn-sm mx-1">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Ссылка для добавления новой группы -->
+<a href="/Groups/Create" class="btn btn-success btn-lg">Создать новую группу</a>

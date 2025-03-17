@@ -1,0 +1,63 @@
+﻿@page
+@model CreateModel
+
+<h2>Добавить преподавателя</h2>
+
+<form method="post" class="form-group">
+    <div class="mb-3">
+        <label for="LastName" class="form-label">Фамилия</label>
+        <input type="text" id="LastName" name="LastName" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="FirstName" class="form-label">Имя</label>
+        <input type="text" id="FirstName" name="FirstName" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="Patronymic" class="form-label">Отчество</label>
+        <input type="text" id="Patronymic" name="Patronymic" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="DegreeId" class="form-label">Ученая степень</label>
+        <select id="DegreeId" name="DegreeId" class="form-control" required>
+            @if (Model.Degrees != null && Model.Degrees.Any())
+            {
+                foreach (var degree in Model.Degrees)
+                {
+                    <option value="@degree.Id">@degree.Name</option>
+                }
+            }
+            else
+            {
+                <option disabled>Нет доступных степеней</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="PositionId" class="form-label">Должность</label>
+        <select id="PositionId" name="PositionId" class="form-control" required>
+            @if (Model.Positions != null && Model.Positions.Any())
+            {
+                foreach (var position in Model.Positions)
+                {
+                    <option value="@position.Id">@position.Name</option>
+                }
+            }
+            else
+            {
+                <option disabled>Нет доступных должностей</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="Experience" class="form-label">Стаж работы</label>
+        <input type="number" id="Experience" name="Experience" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавить</button>
+    <a href="/Teachers/Index" class="btn btn-secondary">Отмена</a>
+</form>

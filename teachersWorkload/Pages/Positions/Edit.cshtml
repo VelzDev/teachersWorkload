@@ -1,0 +1,14 @@
+﻿@page "{id:int}"
+@model EditModel
+
+<h2>Редактировать должность</h2>
+
+<form method="post" class="form-group">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Название</label>
+        <input type="text" id="Name" name="Name" class="form-control" value="@Model.Position.Name" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить изменения</button>
+    <a href="/Positions/Index" class="btn btn-secondary">Отмена</a>
+</form>
